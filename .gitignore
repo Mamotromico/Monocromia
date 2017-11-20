@@ -5,3 +5,15 @@
 *.otf
 
 *.ttf
+
+*.wav
+
+*.exe
+
+*.zip
+
+*.sbx
+
+addons/SMRT/example\.lan
+
+addons/SMRT/font/ReadMe\.txt

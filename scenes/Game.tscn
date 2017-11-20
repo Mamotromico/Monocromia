@@ -16,5 +16,6 @@ patch_margin/right = 4
 language = "res://text/Game.lan"
 face_sprites = ExtResource( 3 )
 bg_sprites = ExtResource( 4 )
+show_debug_messages = true
 
 

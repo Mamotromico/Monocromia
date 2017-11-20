@@ -18,30 +18,32 @@ func _ready():
 	
 	
 func finished():
-	print("cabou")
+#	print("cabou")
+	pass
 
 func dialog_control(info):
-	print("passo")
-	print(info)
+#	print(dialog.language.Dia1.Intro_1)
+#	print("passo")
+#	print(info)
 	if (info.dialog == "Intro"):
 		if(info.answer == 0):
 			dialog.stop()
 			yield(get_tree(), "idle_frame")
-			dialog.show_text("Day1","Intro-1")
-			print(current_info)
+			dialog.show_text("Day1","Intro_1")
+#			print(current_info)
 		if(info.answer == 1):
 			dialog.stop()
 			yield(get_tree(), "idle_frame")
-			dialog.show_text("Day1","Intro-2")
-			print(current_info)
-	elif (info.dialog == "Intro-1"):
-		if(info.answer == 0):
-			dialog.stop()
-			yield(get_tree(), "idle_frame")
-			dialog.show_text("Day1","Intro-1")
-			print(current_info)
-		if(info.answer == 1):
-			dialog.stop()
-			yield(get_tree(), "idle_frame")
-			dialog.show_text("Day1","Intro-2")
-			print(current_info)
+			dialog.show_text("Day1","Intro_2")
+#			print(current_info)
+#	elif (info.dialog == "Intro-1"):
+#		if(info.answer == 0):
+#			dialog.stop()
+#			yield(get_tree(), "idle_frame")
+#			dialog.show_text("Day1","Intro-1")
+#			print(current_info)
+#		if(info.answer == 1):
+#			dialog.stop()
+#			yield(get_tree(), "idle_frame")
+#			dialog.show_text("Day1","Intro-2")
+#			print(current_info)
