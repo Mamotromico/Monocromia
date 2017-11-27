@@ -504,7 +504,9 @@ func agregate(text_id):
 	if enableQuestion.get("is_pressed"):
 		text.answers.resize(choicesNumber.get_value())
 		for i in range(choicesNumber.get_value()):
-			text.answers[i] = options.get_child(i).get_node("text").get_text()
+			text.answers[i] = {}
+			text.answers[i]["choice"] = options.get_child(i).get_node("text").get_text()
+			text.answers[i]["target"] = options.get_child(i).get_node("target").get_text()
 	else:
 		text.answers = []
 
@@ -533,10 +535,12 @@ func populate(text_id):
 	for i in range(options.get_child_count()):
 		print("cleaning option ", i)
 		options.get_child(i).get_node("text").set_text("")
+		options.get_child(i).get_node("target").set_text("")
 	if enableQuestion.get("is_pressed") and typeof(answers) == TYPE_ARRAY:
 		for i in range(answers.size()):
 			print("setting option ", i)
-			options.get_child(i).get_node("text").set_text(answers[i])
+			options.get_child(i).get_node("text").set_text(answers[i].choice)
+			options.get_child(i).get_node("target").set_text(answers[i].target)
 
 
 func selectedTextButtons(btn_index):
@@ -561,3 +565,106 @@ func clear_all():
 	currentDialog = null
 	currentText = null
 	pass
+	
+func pretty_json(string):
+	
+	print ("RAW STR : "+string.c_escape())
+	
+	var ex1 = RegEx.new()
+	var stt1 = 0
+	ex1.compile("(\\{)|(\\()|(\\[)",-1)
+	while ex1.find(string, stt1) >= 0 :
+		string = string.insert(ex1.find(string, stt1)+1,'\n')
+		string = string.insert(ex1.find(string, stt1),'\n')
+		stt1 = ex1.find(string, stt1)+1
+		
+	print ("AFTER EX1 : "+string.c_escape())
+	
+	var ex2 = RegEx.new()
+	var stt2 = 0
+	ex2.compile("(\\})|(\\))|(\\])",-1)
+	while ex2.find(string, stt2) >= 0 :
+		string = string.insert(ex2.find(string, stt2),'\n')
+		stt2 = ex2.find(string, stt2)+1
+	
+	print ("AFTER EX2 : "+string.c_escape())
+	
+	var ex3 = RegEx.new()
+	var stt3 = 0
+	ex3.compile("(?!\\B\"[^\"]*),(?![^\"]*\"\\B)",-1)
+	while ex3.find(string, stt3) >= 0 :
+		string = string.insert(ex3.find(string, stt3)+1,'\n')
+		stt3 = ex3.find(string, stt3)+1
+		
+	print ("AFTER EX3 : "+string.c_escape())
+	
+	var tokens = string.split('\n',false)
+	print ("AFTER SPLIT : "+str(tokens).c_escape())
+	var offsets = []
+	var index=0
+	for token in tokens:
+		var tabs = ""
+		if token.match('{') == true :
+			for mult in range(0,index):
+				tabs+="\t"
+			offsets.append(tabs+token)
+			index += 1
+			print("CURRENT INDEX: "+str(index))
+		elif token.match('(') == true :
+			for mult in range(0,index):
+				tabs+="\t"
+			offsets.append(tabs+token)
+			index += 1
+			print("CURRENT INDEX: "+str(index))
+		elif token.match('[') == true :
+			for mult in range(0,index):
+				tabs+="\t"
+			offsets.append(tabs+token)
+			index += 1
+			print("CURRENT INDEX: "+str(index))
+		elif token.match('},') == true :
+			index -= 1
+			for mult in range(0,index):
+				tabs+="\t"
+			offsets.append(tabs+token)
+			print("CURRENT INDEX: "+str(index))
+		elif token.match('}') == true :
+			index -= 1
+			for mult in range(0,index):
+				tabs+="\t"
+			offsets.append(tabs+token)
+			print("CURRENT INDEX: "+str(index))
+		elif token.match('),') == true :
+			index -= 1
+			for mult in range(0,index):
+				tabs+="\t"
+			offsets.append(tabs+token)
+			print("CURRENT INDEX: "+str(index))
+		elif token.match(')') == true :
+			index -= 1
+			for mult in range(0,index):
+				tabs+="\t"
+			offsets.append(tabs+token)
+			print("CURRENT INDEX: "+str(index))
+		elif token.match('],') == true :
+			index -= 1
+			for mult in range(0,index):
+				tabs+="\t"
+			offsets.append(tabs+token)
+			print("CURRENT INDEX: "+str(index))
+			print("CURRENT INDEX: "+str(index))
+		elif token.match(']') == true :
+			index -= 1
+			for mult in range(0,index):
+				tabs+="\t"
+			offsets.append(tabs+token)
+		else :
+			for mult in range(0,index):
+				tabs+="\t"
+			offsets.append(tabs+token)
+	print ("AFTER TOKENS : "+str(offsets).c_escape())
+	var prettyJson = ""
+	for line in offsets:
+		prettyJson+=line+"\n"
+	print ("AFTER JOIN : "+prettyJson.c_escape())
+	return prettyJson
