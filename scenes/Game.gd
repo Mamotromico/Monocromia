@@ -6,10 +6,12 @@ extends Node2D
 
 onready var dialog = get_node("dialog")
 var current_info
+var newDialog = false
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	set_fixed_process(true)
 	dialog.connect("dialog_control",self,"dialog_control")
 	dialog.connect("finished",self,"finished")
 	dialog.show_text("Dia1","Intro")
@@ -24,12 +26,28 @@ func _ready():
 	
 	pass
 	
+func _fixed_process(delta):	
+	if newDialog:
+		print("novo texto")
+		print(current_info)
+		dialog.show_text(
+		current_info.chapter,current_info.answer.target)
+		newDialog = false
+		current_info = null
+	
 	
 func finished():
-#	print("cabou")
+	print("cabou")
+	newDialog = true
 	pass
 
 func dialog_control(info):
+	if info.answer != null:
+		print("copiando : ")
+		print(info)
+		current_info = info
+		print("checando")
+		print(current_info)
 	pass
 	
 func pretty_json(string):
