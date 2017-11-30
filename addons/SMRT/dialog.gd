@@ -432,7 +432,7 @@ func selected_answer(btn,array_answer):
 	emit_signal("dialog_control", info)
 	emit_signal("answer_selected")
 	dialog_dup.queue_free()
-	info.answer = {}
+	info.answer = {"choice":null, "target":null}
 	
 func _input(event):
 	
