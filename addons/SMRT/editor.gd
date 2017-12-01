@@ -52,6 +52,7 @@ onready var question = get_node("VBoxContainer/question")
 onready var choicesNumber = get_node("VBoxContainer/question/VBoxContainer/choicesNumber")
 onready var options = question.get_node("VBoxContainer/GridContainer")
 onready var option = options.get_child(0).duplicate()
+onready var concon = get_node("VBoxContainer/concon/connection")
 var messages
 # Global vars
 var contents = {}
@@ -500,6 +501,8 @@ func agregate(text_id):
 	text.beep_pitch = beep_pitch.get("range/value")
 	text.text = textEditor.get_text()
 	text.enable_question = enableQuestion.get("is_pressed")
+
+	text["connection"] = concon.get_text()
 	
 	if enableQuestion.get("is_pressed"):
 		text.answers.resize(choicesNumber.get_value())
@@ -521,7 +524,7 @@ func populate(text_id):
 	beep.set("is_pressed", contents[currentChapter][currentDialog][text_id].beep)
 	beep_pitch.set("range/value", contents[currentChapter][currentDialog][text_id].beep_pitch)
 	
-	
+	concon.set_text(contents[currentChapter][currentDialog][text_id].connection)
 	
 	textEditor.set_text(contents[currentChapter][currentDialog][text_id].text)
 	

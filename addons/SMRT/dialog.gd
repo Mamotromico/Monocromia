@@ -55,7 +55,7 @@ var dialog_array
 var background_pos
 #THE NEXT VAR IS SENT THROUGH THE SIGNALS dialog_control 
 #AND answer_selected
-var info = {chapter = null, dialog = null, last_text_index = null, total_text = null, answer = {choice = null, target = null}}
+var info = {chapter = null, dialog = null, last_text_index = null, total_text = null, connection = null, answer = {choice = null, target = null}}
 
 var dimensions = {"box_rectangle": null, "text_rectangle": null, "font_size": null, "text_margin":{"left": null, "right": null, "top":null, "bottom":null}}
 
@@ -164,7 +164,7 @@ func show_text(chapter, dialog, start_at = 0):
 	if start_at == null:      
 		start_at = 0
 	if chapter =="single_text":
-		info = {chapter = chapter, dialog = null, last_text_index = null, total_text = 1, answer = {choice = null, target = null}}
+		info = {chapter = chapter, dialog = null, last_text_index = null, total_text = 1, connection = null, answer = {choice = null, target = null}}
 		dialog_array = dialog
 		position = 1
 	if typeof(dialog_array) == TYPE_STRING:

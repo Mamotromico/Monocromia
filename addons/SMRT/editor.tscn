@@ -27,7 +27,7 @@ size_flags/vertical = 2
 margin/left = 10.0
 margin/top = -2.0
 margin/right = 760.0
-margin/bottom = 633.0
+margin/bottom = 926.0
 alignment = 0
 
 [node name="messages" type="Label" parent="VBoxContainer"]
@@ -115,6 +115,7 @@ button/selected = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -150,7 +151,6 @@ alignment = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ChapterContainer/VBoxContainer"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -898,6 +898,48 @@ button/0/tooltip = ""
 button/0/icon = null
 button/selected = 0
 
+[node name="concon" type="HBoxContainer" parent="VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 477.0
+margin/right = 750.0
+margin/bottom = 501.0
+alignment = 0
+
+[node name="next" type="Label" parent="VBoxContainer/concon"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 5.0
+margin/right = 30.0
+margin/bottom = 19.0
+text = "Next"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="connection" type="LineEdit" parent="VBoxContainer/concon"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 34.0
+margin/top = 0.0
+margin/right = 167.0
+margin/bottom = 24.0
+placeholder/alpha = 0.6
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
 
 focus/ignore_mouse = false
@@ -905,9 +947,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 477.0
+margin/top = 505.0
 margin/right = 750.0
-margin/bottom = 499.0
+margin/bottom = 527.0
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
@@ -922,9 +964,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 503.0
+margin/top = 531.0
 margin/right = 750.0
-margin/bottom = 615.0
+margin/bottom = 643.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/question"]
 
