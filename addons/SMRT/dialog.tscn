@@ -127,9 +127,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 116.0
-margin/right = -256.0
-margin/bottom = -116.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 texture = ExtResource( 1 )
 modulate = Color( 1, 1, 1, 0.156863 )
 patch_margin/left = 4
@@ -152,13 +152,14 @@ show_debug_messages = false
 
 [node name="bg" type="AnimatedSprite" parent="."]
 
+transform/pos = Vector2( -1937, -967 )
 z/z = -5
 animation = "default"
 centered = false
 
 [node name="face" type="AnimatedSprite" parent="."]
 
-transform/pos = Vector2( -247.091, -332.41 )
+transform/pos = Vector2( -2184.09, -1299.41 )
 transform/scale = Vector2( 0.5, 0.5 )
 z/z = -1
 animation = "default"

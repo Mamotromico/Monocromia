@@ -1,6 +1,6 @@
 [gd_resource type="DynamicFont" load_steps=2 format=1]
 
-[ext_resource path="res://ttf/arial.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ttf/Roboto-Light.ttf" type="DynamicFontData" id=1]
 
 [resource]
 

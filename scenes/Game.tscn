@@ -1,56 +1,39 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=10 format=1]
 
-[ext_resource path="res://scenes/Game.gd" type="Script" id=1]
-[ext_resource path="res://background/FIMsemblur.png" type="Texture" id=2]
-[ext_resource path="res://addons/SMRT/dialog.tscn" type="PackedScene" id=3]
-[ext_resource path="res://characters/characters.tres" type="SpriteFrames" id=4]
-[ext_resource path="res://background/backgrounds.tres" type="SpriteFrames" id=5]
-[ext_resource path="res://background/MenuNeutro.png" type="Texture" id=6]
-[ext_resource path="res://ttf/arial.ttf" type="DynamicFontData" id=7]
-
-[sub_resource type="CanvasItemShader" id=2]
-
-_code = {
-"fragment": "uniform float percent = 0;
-COLOR.rgb = vec3(dot(COLOR.rgb, vec3(0.299 + (1 - 0.299)*percent, 0.587 + (1 - 0.587)*percent, 0.114 + (1 - 0.114)*percent)));",
-"fragment_ofs": 0,
-"light": "",
-"light_ofs": 0,
-"vertex": "",
-"vertex_ofs": 0
-}
-
-[sub_resource type="CanvasItemMaterial" id=3]
-
-shader/shader = SubResource( 2 )
-shader/shading_mode = 0
-shader_param/percent = 0.0
+[ext_resource path="res://shaders and materials/greyScreen.tres" type="CanvasItemMaterial" id=1]
+[ext_resource path="res://scenes/Game.gd" type="Script" id=2]
+[ext_resource path="res://background/FIMsemblur.png" type="Texture" id=3]
+[ext_resource path="res://addons/SMRT/dialog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/characters.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://background/backgrounds.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://background/MenuNeutro.png" type="Texture" id=7]
+[ext_resource path="res://ttf/arial.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 
 font/size = 50
 font/use_mipmaps = false
 font/use_filter = false
-font/font = ExtResource( 7 )
+font/font = ExtResource( 8 )
 
 [node name="ScreenSpace" type="Node2D"]
 
-material/material = SubResource( 3 )
-script/script = ExtResource( 1 )
+material/material = ExtResource( 1 )
+script/script = ExtResource( 2 )
 
 [node name="FIM" type="Sprite" parent="."]
 
 z/z = -20
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 centered = false
 
-[node name="dialog" parent="." instance=ExtResource( 3 )]
+[node name="dialog" parent="." instance=ExtResource( 4 )]
 
 modulate = Color( 1, 1, 1, 0.344275 )
 patch_margin/right = 4
 language = "res://text/Game.lan"
-face_sprites = ExtResource( 4 )
-bg_sprites = ExtResource( 5 )
+face_sprites = ExtResource( 5 )
+bg_sprites = ExtResource( 6 )
 
 [node name="Menu" type="Control" parent="."]
 
@@ -65,7 +48,7 @@ margin/bottom = 40.0
 
 [node name="Sprite" type="Sprite" parent="Menu"]
 
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 centered = false
 
 [node name="Play" type="TextureButton" parent="Menu"]
