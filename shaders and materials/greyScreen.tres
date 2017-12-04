@@ -1,0 +1,20 @@
+[gd_resource type="CanvasItemMaterial" load_steps=2 format=1]
+
+[sub_resource type="CanvasItemShader" id=2]
+
+_code = {
+"fragment": "uniform float percent = 0;
+COLOR.rgb = vec3(dot(COLOR.rgb, vec3(0.299 + (1 - 0.299)*percent, 0.587 + (1 - 0.587)*percent, 0.114 + (1 - 0.114)*percent)));",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[resource]
+
+shader/shader = SubResource( 2 )
+shader/shading_mode = 0
+shader_param/percent = 0.0
+

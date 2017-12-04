@@ -44,6 +44,7 @@ var on_dialog = false
 var text
 var typewriter = true
 var enable_question
+var connection
 var answers
 var dialog_dup
 var btn_answers
@@ -53,9 +54,12 @@ var texture_width
 var texture_height
 var dialog_array
 var background_pos
+
+var blur = preload("res://shaders and materials/blurSprite.tres")
+
 #THE NEXT VAR IS SENT THROUGH THE SIGNALS dialog_control 
 #AND answer_selected
-var info = {chapter = null, dialog = null, last_text_index = null, total_text = null, answer = {choice = null, target = null}}
+var info = {chapter = null, dialog = null, last_text_index = null, total_text = null, connection = null, answer = {choice = null, target = null}}
 
 var dimensions = {"box_rectangle": null, "text_rectangle": null, "font_size": null, "text_margin":{"left": null, "right": null, "top":null, "bottom":null}}
 
@@ -118,6 +122,7 @@ func reset():
 	text = null
 	position= null
 	side = null
+	connection = null
 	answer_number = null
 	textObj.set_bbcode("")
 	dialog_array = []
@@ -164,7 +169,7 @@ func show_text(chapter, dialog, start_at = 0):
 	if start_at == null:      
 		start_at = 0
 	if chapter =="single_text":
-		info = {chapter = chapter, dialog = null, last_text_index = null, total_text = 1, answer = {choice = null, target = null}}
+		info = {chapter = chapter, dialog = null, last_text_index = null, total_text = 1, connection = null, answer = {choice = null, target = null}}
 		dialog_array = dialog
 		position = 1
 	if typeof(dialog_array) == TYPE_STRING:
@@ -210,6 +215,7 @@ func show_text(chapter, dialog, start_at = 0):
 	nextLine.hide()
 	textObj.set_bbcode("")
 	face.hide()
+	bg.set_material(null)
 #	ERROR checking
 	if dialog_array == null or dialog_array.empty():
 		yield(get_tree(),"idle_frame") # fix for signal not registering at the same loop
@@ -228,6 +234,8 @@ func show_text(chapter, dialog, start_at = 0):
 		nextLine.hide()
 #		Gets the values to be reseted at the end of the loop
 		# ERROR CHECKING:
+		print("VAMO VER")
+		print(dialog_array[start_at])
 		if show_debug_messages:
 			print("STARTED DIALOG AT ", start_at)
 		if dialog_array[start_at].has("beep"):
@@ -236,6 +244,9 @@ func show_text(chapter, dialog, start_at = 0):
 			beep_pitch = dialog_array[start_at].beep_pitch
 		if dialog_array[start_at].has("frame_position"):
 			position = dialog_array[start_at].frame_position
+		if dialog_array[start_at].has("connection"):
+			info.connection = dialog_array[start_at].connection
+			print("VOU MANDAR ESSE : "+str(connection))
 		if dialog_array[start_at].has("enable_question"):
 			enable_question = dialog_array[start_at].enable_question
 			if dialog_array[start_at].has("answers"):
@@ -245,16 +256,21 @@ func show_text(chapter, dialog, start_at = 0):
 			if typeof(dialog_array[start_at].face_frame) == TYPE_REAL or typeof(dialog_array[start_at].face_position) == TYPE_INT:
 				face.set_frame(int(dialog_array[start_at].face_frame))
 				face.show()
+				bg.set_material(blur)
 		if dialog_array[start_at].has("face_position"):
 			side = dialog_array[start_at].face_position
-	
+		
+		
 			face.show()
+			bg.set_material(blur)
 		texture_width = face.get_sprite_frames().get_frame(face.get_animation(), face.get_frame()).get_width()
 		texture_height = face.get_sprite_frames().get_frame(face.get_animation(), face.get_frame()).get_height()
 		#BG added
 		bg = get_node("bg");
 		bg.set_frame(int(dialog_array[start_at].background_frame))
 		bg.show()
+		
+		
 		
 #		Side of the dialog to display the face
 #		RESETING THE DIALOG	
@@ -312,6 +328,7 @@ func show_text(chapter, dialog, start_at = 0):
 			textObj.set_margin(2, dimensions.text_margin.right)
 			textObj.set_margin(3, dimensions.text_margin.bottom)
 			face.hide()
+			bg.set_material(null)
 		elif side == 1:
 #			textObj.set_margin(0, texture_width + texture_width/3)
 #			textObj.set_margin(2, dimensions.text_margin.right)
@@ -320,6 +337,7 @@ func show_text(chapter, dialog, start_at = 0):
 			if show_debug_messages:
 				print(face.get_pos())
 			face.show()
+			bg.set_material(blur)
 		elif side == 2:
 #			textObj.set_margin(2, texture_width + texture_width/3)
 #			textObj.set_margin(0, dimensions.text_margin.left)
@@ -329,6 +347,7 @@ func show_text(chapter, dialog, start_at = 0):
 			if show_debug_messages:
 				print(face.get_pos())
 			face.show()
+			bg.set_material(blur)
 		while textObj.get_total_character_count() > textObj.get_visible_characters():
 			if not typewriter:
 				textObj.set_visible_characters(textObj.get_total_character_count())
@@ -356,6 +375,9 @@ func show_text(chapter, dialog, start_at = 0):
 			else:
 				start_at +=1
 			finished = false
+			
+			
+			
 			#RESET The message system:
 	on_dialog = false
 # Emits a signal when all the dialogs are over.
@@ -443,6 +465,8 @@ func _input(event):
 			audio.play("beep_letter")
 	if finished and not event.is_echo() and event.is_action_pressed("ui_accept"):
 		emit_signal("dialog_control", info)
+		print("ENVIANDO")
+		print(info)
 	
 
 func stop():

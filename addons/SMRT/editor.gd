@@ -52,6 +52,10 @@ onready var question = get_node("VBoxContainer/question")
 onready var choicesNumber = get_node("VBoxContainer/question/VBoxContainer/choicesNumber")
 onready var options = question.get_node("VBoxContainer/GridContainer")
 onready var option = options.get_child(0).duplicate()
+
+#######
+onready var concon = get_node("VBoxContainer/connection")
+
 var messages
 # Global vars
 var contents = {}
@@ -502,12 +506,14 @@ func agregate(text_id):
 	text.enable_question = enableQuestion.get("is_pressed")
 	
 	if enableQuestion.get("is_pressed"):
+		text.connection = ""
 		text.answers.resize(choicesNumber.get_value())
 		for i in range(choicesNumber.get_value()):
 			text.answers[i] = {}
 			text.answers[i]["choice"] = options.get_child(i).get_node("text").get_text()
 			text.answers[i]["target"] = options.get_child(i).get_node("target").get_text()
 	else:
+		text["connection"] = concon.get_text()
 		text.answers = []
 
 func populate(text_id):
@@ -524,8 +530,9 @@ func populate(text_id):
 	
 	
 	textEditor.set_text(contents[currentChapter][currentDialog][text_id].text)
-	
+	concon.set_text(contents[currentChapter][currentDialog][text_id].connection)
 	enableQuestion.set("is_pressed", contents[currentChapter][currentDialog][text_id].enable_question)
+	
 	
 	answers = contents[currentChapter][currentDialog][text_id].answers
 	choicesNumber.set("range/value", answers.size())

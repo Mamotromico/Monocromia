@@ -1,9 +1,13 @@
 extends Node2D
 
 onready var dialog = get_node("dialog")
+onready var play = get_node("Menu/Play")
+onready var options = get_node("Menu/Options")
+onready var quit = get_node("Menu/Quit")
 
 var myGoddamSavedInfo = {}
 var newDialog = false
+var new2Dialog = false
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -11,7 +15,20 @@ func _ready():
 	set_fixed_process(true)
 	dialog.connect("dialog_control",self,"dialog_control")
 	dialog.connect("finished",self,"finished")
-	dialog.show_text("Game","D1Intro")
+	
+	play.connect("mouse_enter",self,"hover",[play])
+	play.connect("mouse_exit",self,"hover",[play])
+	play.connect("pressed",self,"startGame")
+	options.connect("mouse_enter",self,"hover",[options])
+	options.connect("mouse_exit",self,"hover",[options])
+	options.connect("pressed",self,"openOptions")
+	quit.connect("mouse_enter",self,"hover",[quit])
+	quit.connect("mouse_exit",self,"hover",[quit])
+	quit.connect("pressed",self,"gtfo")
+	
+	
+	
+#	dialog.show_text("Game","D1Intro")
 	
 #	var jsonTest = {}
 #	jsonTest["Hi"] = "Hello, how are you"
@@ -27,22 +44,53 @@ func _fixed_process(delta):
 	if newDialog == true:
 		print("novo texto")
 		print(myGoddamSavedInfo)
-		dialog.show_text(myGoddamSavedInfo.chapter,myGoddamSavedInfo.answer.target)
 		newDialog = false
+		dialog.show_text(myGoddamSavedInfo.chapter,myGoddamSavedInfo.answer.target)
+	if new2Dialog == true:
+		print("novo texto")
+		print(myGoddamSavedInfo)
+		new2Dialog = false
+		dialog.show_text(myGoddamSavedInfo.chapter,myGoddamSavedInfo.connection)
 	pass
 	
+func hover(btn):
+	if btn.get_node("text").is_hidden():
+		btn.get_node("text").show()
+	else:
+		btn.get_node("text").hide()
+
+
+func startGame():
+	get_node("Menu").hide()
+	dialog.show_text("Game","D1Intro")
+	
+func openOptions():
+	pass
+	
+func gtfo():
+	get_tree().quit()
 	
 func finished():
+	
+	
 	print("cabou")
 
 func dialog_control(info):
+	print(info)
 	if (info.answer.choice != null and info.answer.target != null):
+		myGoddamSavedInfo = str2var(var2str(info))
 		print("copiando : ")
 		print("info :"+str(info))
-		myGoddamSavedInfo = str2var(var2str(info))
 		print("checando")
 		print("current : "+str(myGoddamSavedInfo))
 		newDialog = true;
+	if info.connection != null and info.connection != "":
+		myGoddamSavedInfo = str2var(var2str(info))
+		print("copiando : ")
+		print("info :"+str(info))
+		print("checando")
+		print("current : "+str(myGoddamSavedInfo))
+		new2Dialog = true
 	
 #func pretty_json(string):
 #	

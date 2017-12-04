@@ -11,8 +11,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 23.0
-margin/right = 800.0
-margin/bottom = 670.0
+margin/right = 990.0
+margin/bottom = 697.0
 popup/exclusive = false
 window/title = "SMRT Editor"
 script/script = ExtResource( 1 )
@@ -26,8 +26,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 10.0
 margin/top = -2.0
-margin/right = 760.0
-margin/bottom = 633.0
+margin/right = 984.0
+margin/bottom = 659.0
 alignment = 0
 
 [node name="messages" type="Label" parent="VBoxContainer"]
@@ -38,7 +38,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 750.0
+margin/right = 974.0
 margin/bottom = 14.0
 uppercase = true
 percent_visible = 1.0
@@ -54,7 +54,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 18.0
-margin/right = 750.0
+margin/right = 974.0
 margin/bottom = 52.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
@@ -65,7 +65,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 7.0
 margin/top = 7.0
-margin/right = 743.0
+margin/right = 967.0
 margin/bottom = 27.0
 alignment = 0
 
@@ -121,12 +121,14 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 56.0
-margin/right = 750.0
-margin/bottom = 337.0
+margin/right = 974.0
+margin/bottom = 336.0
+custom_constants/separation = 0
 alignment = 0
 
 [node name="ChapterContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -134,7 +136,7 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 114.0
-margin/bottom = 281.0
+margin/bottom = 280.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ChapterContainer"]
 
@@ -145,7 +147,7 @@ size_flags/vertical = 2
 margin/left = 7.0
 margin/top = 7.0
 margin/right = 107.0
-margin/bottom = 274.0
+margin/bottom = 273.0
 alignment = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ChapterContainer/VBoxContainer"]
@@ -237,12 +239,12 @@ button/selected = 0
 editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 118.0
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 114.0
 margin/top = 0.0
-margin/right = 232.0
-margin/bottom = 281.0
+margin/right = 556.0
+margin/bottom = 280.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/DialogContainer"]
 
@@ -252,8 +254,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 7.0
 margin/top = 7.0
-margin/right = 107.0
-margin/bottom = 274.0
+margin/right = 435.0
+margin/bottom = 273.0
 alignment = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/DialogContainer/VBoxContainer"]
@@ -265,7 +267,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 100.0
+margin/right = 428.0
 margin/bottom = 14.0
 alignment = 0
 
@@ -293,7 +295,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 18.0
-margin/right = 100.0
+margin/right = 428.0
 margin/bottom = 218.0
 
 [node name="HButtonArray" type="HButtonArray" parent="VBoxContainer/HBoxContainer/DialogContainer/VBoxContainer"]
@@ -304,7 +306,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 222.0
-margin/right = 100.0
+margin/right = 428.0
 margin/bottom = 242.0
 flat = false
 button/count = 2
@@ -326,7 +328,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 246.0
-margin/right = 100.0
+margin/right = 428.0
 margin/bottom = 266.0
 flat = false
 button/count = 2
@@ -343,15 +345,14 @@ button/selected = 0
 [node name="TextContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 
 editor/display_folded = true
-rect/min_size = Vector2( 145, 281 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 236.0
+margin/left = 556.0
 margin/top = 0.0
-margin/right = 381.0
-margin/bottom = 281.0
+margin/right = 687.0
+margin/bottom = 280.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/TextContainer"]
 
@@ -361,8 +362,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 7.0
 margin/top = 7.0
-margin/right = 138.0
-margin/bottom = 274.0
+margin/right = 124.0
+margin/bottom = 273.0
 alignment = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/TextContainer/VBoxContainer"]
@@ -373,7 +374,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 131.0
+margin/right = 117.0
 margin/bottom = 14.0
 alignment = 0
 
@@ -401,7 +402,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 18.0
-margin/right = 131.0
+margin/right = 117.0
 margin/bottom = 218.0
 
 [node name="HButtonArray" type="HButtonArray" parent="VBoxContainer/HBoxContainer/TextContainer/VBoxContainer"]
@@ -412,7 +413,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 222.0
-margin/right = 131.0
+margin/right = 117.0
 margin/bottom = 242.0
 flat = false
 button/count = 3
@@ -437,7 +438,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 246.0
-margin/right = 131.0
+margin/right = 117.0
 margin/bottom = 266.0
 flat = false
 button/count = 2
@@ -457,10 +458,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 385.0
+margin/left = 687.0
 margin/top = 0.0
-margin/right = 388.0
-margin/bottom = 281.0
+margin/right = 690.0
+margin/bottom = 280.0
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer"]
 
@@ -469,10 +470,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 392.0
+margin/left = 690.0
 margin/top = 0.0
-margin/right = 676.0
-margin/bottom = 281.0
+margin/right = 974.0
+margin/bottom = 280.0
 columns = 2
 
 [node name="FramePosition1" type="PanelContainer" parent="VBoxContainer/HBoxContainer/GridContainer"]
@@ -800,15 +801,14 @@ suffix = ""
 
 [node name="TextPanel" type="PanelContainer" parent="VBoxContainer"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 341.0
-margin/right = 750.0
-margin/bottom = 473.0
+margin/top = 340.0
+margin/right = 974.0
+margin/bottom = 472.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TextPanel"]
 
@@ -818,7 +818,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 7.0
 margin/top = 7.0
-margin/right = 743.0
+margin/right = 967.0
 margin/bottom = 125.0
 alignment = 0
 
@@ -830,7 +830,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 736.0
+margin/right = 960.0
 margin/bottom = 14.0
 alignment = 0
 
@@ -857,7 +857,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 18.0
-margin/right = 736.0
+margin/right = 960.0
 margin/bottom = 118.0
 alignment = 0
 
@@ -898,6 +898,36 @@ button/0/tooltip = ""
 button/0/icon = null
 button/selected = 0
 
+[node name="label" type="Label" parent="VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 476.0
+margin/right = 974.0
+margin/bottom = 490.0
+text = "Connect to"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="connection" type="LineEdit" parent="VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 494.0
+margin/right = 974.0
+margin/bottom = 518.0
+placeholder/alpha = 0.6
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
 
 focus/ignore_mouse = false
@@ -905,9 +935,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 477.0
-margin/right = 750.0
-margin/bottom = 499.0
+margin/top = 522.0
+margin/right = 974.0
+margin/bottom = 544.0
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
@@ -922,9 +952,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 503.0
-margin/right = 750.0
-margin/bottom = 615.0
+margin/top = 548.0
+margin/right = 974.0
+margin/bottom = 660.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/question"]
 
@@ -934,7 +964,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 7.0
 margin/top = 7.0
-margin/right = 743.0
+margin/right = 967.0
 margin/bottom = 105.0
 alignment = 0
 
@@ -946,7 +976,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 736.0
+margin/right = 960.0
 margin/bottom = 24.0
 range/min = 0.0
 range/max = 4.0
@@ -967,7 +997,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 28.0
-margin/right = 736.0
+margin/right = 960.0
 margin/bottom = 98.0
 columns = 4
 
